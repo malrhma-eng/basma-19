@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 19th Birthday Basma! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #d63384;
+            --accent-color: #ff4d6d;
+            --bg-gradient: linear-gradient(135deg, #0f0c20 0%, #2b092b 50%, #1a0011 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(255, 77, 109, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: #ffffff;
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .music-player-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(255, 77, 109, 0.95);
+            border: 2px solid #fff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .music-player-btn:hover {
+            transform: scale(1.08);
+            background: #ff4d6d;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        .en-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #ff758f;
+            text-shadow: 0 0 15px rgba(255, 117, 143, 0.6);
+            margin-bottom: 5px;
+            direction: ltr;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ffccd5;
+            margin-top: 10px;
+        }
+
+        .countdown-container {
+            background: rgba(255, 77, 109, 0.12);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0 35px 0;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .countdown-title {
+            font-size: 1.2rem;
+            color: #ff758f;
+            margin-bottom: 15px;
+        }
+
+        .timer-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            direction: ltr;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff758f;
+            border-radius: 12px;
+            padding: 10px 15px;
+            min-width: 80px;
+        }
+
+        .time-box .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .time-box .label {
+            font-size: 0.85rem;
+            color: #ffccd5;
+        }
+
+        .hero-love-quote {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(8px);
+            line-height: 1.9;
+            font-size: 1.2rem;
+            color: #ffe6e8;
+        }
+
+        .hero-love-quote span {
+            color: #ff758f;
+            font-weight: bold;
+        }
+
+        .tablet-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 40px 0;
+        }
+
+        .tablet-device {
+            background: #222;
+            border-radius: 35px;
+            padding: 20px;
+            border: 4px solid #444;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 77, 109, 0.3);
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+        }
+
+        .tablet-screen {
+            background: #0d0614;
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            overflow: hidden;
+        }
+
+        .tablet-title {
+            color: #ff758f;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .tablet-photos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tablet-photo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #ff758f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: #000;
+        }
+
+        .tablet-photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .side-photo {
+            width: 170px;
+            height: 220px;
+        }
+
+        .center-photo {
+            width: 130px;
+            height: 170px;
+            border-color: #ffb3c1;
+        }
+
+        .photo-label {
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 0.85rem;
+            padding: 4px;
+            color: #fff;
+        }
+
+        .celebration-card {
+            margin: 40px 0;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: #111;
+        }
+
+        .celebration-card img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .secret-message-section {
+            margin: 40px 0;
+        }
+
+        .interactive-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff758f);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 77, 109, 1); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 77, 109, 0.6); }
+        }
+
+        .interactive-btn:hover {
+            transform: translateY(-3px) scale(1.08) !important;
+        }
+
+        .secret-card {
+            display: none;
+            background: rgba(255, 77, 109, 0.15);
+            border: 2px dashed #ff758f;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 25px;
+            backdrop-filter: blur(10px);
+            text-align: right;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .secret-card h3 {
+            color: #ff758f;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .secret-card ol {
+            padding-right: 25px;
+            line-height: 2.2;
+            font-size: 1.15rem;
+            color: #ffe6e8;
+        }
+
+        .secret-card li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #ffccd5;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <button class="music-player-btn" id="musicBtn" onclick="toggleSynthMusic()">
+        <span id="musicIcon">🎵</span> <span id="musicText">تشغيل الموسيقى</span>
+    </button>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <div class="container">
+        
+        <header>
+            <div class="en-title">Happy 19th Birthday Basma ♡</div>
+            <h1>كل عام وأنتِ حبيبتي ونور عيني ✨</h1>
+            <p class="subtitle">07.11.2007 - اليوم تكتملين 19 عاماً من الجمال والرقة</p>
+        </header>
+
+        <div class="countdown-container">
+            <div class="countdown-title">⏰ الوقت المتبقي لبدء الاحتفال بعيد ميلاد بسمة الـ 19:</div>
+            <div class="timer-boxes">
+                <div class="time-box">
+                    <div class="number" id="hours">00</div>
+                    <div class="label">ساعة</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="minutes">00</div>
+                    <div class="label">دقيقة</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="seconds">00</div>
+                    <div class="label">ثانية</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-love-quote">
+            <p>
+                "في تمام الساعة الـ 12 منتصف الليل، يبتسم العالم لولادة <span>أميرتي بسمة</span>. 
+                أنتِ لستِ فقط عاماً إضافياً في حياتي، بل أنتِ الحياة بأكملها. عيونكِ موطني، وضحكتكِ هي الموسيقى الأحب لقلبي. كل عام وأنتِ ملكة قلبي وأجمل حكاياتي ❤️"
+            </p>
+        </div>
+
+        <div class="tablet-wrapper">
+            <div class="tablet-device">
+                <div class="tablet-screen">
+                    <!-- العنوان المعدل داخل التابلت -->
+                    <div class="tablet-title">يوماً ما أنا وأنتِ وشموستنا ❤️</div>
+                    <div class="tablet-photos">
+                        <div class="tablet-photo-card side-photo">
+                            <img src="photo_2026-08-11_22-48-36.jpg" alt="صورتي">
+                            <div class="photo-label">حبيبك ❤️</div>
+                        </div>
+
+                        <div class="tablet-photo-card center-photo">
+                            <img src="image_bc6b3f.jpg" alt="بسمة وهي صغيرة">
+                            <div class="photo-label">طفلتي 👶🏻</div>
+                        </div>
+
+                        <div class="tablet-photo-card side-photo">
+                            <img src="image_bc6a8a.jpg" alt="بسمة">
+                            <div class="photo-label">بسمة ✨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="celebration-card">
+            <img src="image_bc6ae4.jpg" alt="كعكة عيد الميلاد الـ 19 لبسمة">
+        </div>
+
+        <section class="secret-message-section">
+            <button class="interactive-btn" onclick="toggleSecretMessage()">اضغط هنا لمعرفة كم أحبك! 💖💌</button>
+
+            <div class="secret-card" id="secretCard">
+                <h3>💌 20 سطر حب لبسمة في عيد ميلادها الـ 19 💌</h3>
+                <ol>
+                    <li>في يوم 7/11 ولدت أجمل أميرة، وبدأت قصتنا العظيمة.</li>
+                    <li>كل عام وأنتِ البسمة التي تضيء لي ظلام الأيام.</li>
+                    <li>19 عاماً من الجمال والأنوثة والرقة التي لا تشبه أحداً.</li>
+                    <li>وجودك في حياتي ليس مجرد صدفة، بل هو أجمل قدر ونعمة.</li>
+                    <li>عيونك الجميلة هي المكان الوحيد الذي أشعر فيه بالأمان.</li>
+                    <li>ضحكتك تجعل العالم من حولي يزهر ويفيض فرحاً.</li>
+                    <li>أنتِ لستِ فقط حبيبتي، بل أنتِ صديقتي وتوأم روحي.</li>
+                    <li>أوعدك في عامك الـ 19 أن أكون لكِ السند والمحب دائماً.</li>
+                    <li>كل ثانية وأنتِ بقلبي، وكل دقيقة وحبك يكبر في صدري.</li>
+                    <li>مهما كبرتِ ومرت الأيام، ستظلين دائماً طفلتي المدللة.</li>
+                    <li>You are the most beautiful chapter in my story.</li>
+                    <li>My heart belongs to you today, tomorrow, and forever.</li>
+                    <li>Every single day with you feels like a sweet dream.</li>
+                    <li>Your smile brightens my darkest days and warms my soul.</li>
+                    <li>Happy 19th Birthday to the queen of my heart, Basma.</li>
+                    <li>May your 19th year bring you as much joy as you give me.</li>
+                    <li>I promise to hold your hand through every step of life.</li>
+                    <li>You make loving you the easiest and sweetest thing in the world.</li>
+                    <li>دام وجودك في عمري، ودامت بسمتك نوري وضيائي.</li>
+                    <li>أحبك بكل ما أوتيت من نبض، أحبك اليوم وللأبد يا بسمة قلبي! ❤️</li>
+                </ol>
+            </div>
+        </section>
+
+        <footer>
+            <p>تم التصميم بكل حب لأجلكِ يا بسمة | 7/11/2007 ❤️</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const targetDate = new Date("November 7, 2026 00:00:00").getTime();
+        let fireworksTriggered = false;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+
+                if (!fireworksTriggered) {
+                    fireworksTriggered = true;
+                    startHeartFireworks();
+                    if(!isMusicPlaying) toggleSynthMusic();
+                }
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        setInterval(createHeart, 300);
+
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let musicTimer = null;
+
+        const melody = [
+            { note: 261.63, duration: 400 },
+            { note: 261.63, duration: 400 },
+            { note: 293.66, duration: 800 },
+            { note: 261.63, duration: 800 },
+            { note: 349.23, duration: 800 },
+            { note: 329.63, duration: 1200 },
+            { note: 261.63, duration: 400 },
+            { note: 261.63, duration: 400 },
+            { note: 293.66, duration: 800 },
+            { note: 261.63, duration: 800 },
+            { note: 392.00, duration: 800 },
+            { note: 349.23, duration: 1200 }
+        ];
+
+        function playNote(freq, duration) {
+            if (!audioCtx || !isMusicPlaying) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + (duration / 1000));
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + (duration / 1000));
+        }
+
+        function playMelodyLoop(index = 0) {
+            if (!isMusicPlaying) return;
+            const current = melody[index];
+            playNote(current.note, current.duration);
+            const nextIndex = (index + 1) % melody.length;
+            musicTimer = setTimeout(() => playMelodyLoop(nextIndex), current.duration + 50);
+        }
+
+        function toggleSynthMusic() {
+            const btnText = document.getElementById('musicText');
+            const btnIcon = document.getElementById('musicIcon');
+
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (!isMusicPlaying) {
+                isMusicPlaying = true;
+                btnText.innerText = "إيقاف الموسيقى";
+                btnIcon.innerText = "🔊";
+                playMelodyLoop(0);
+            } else {
+                isMusicPlaying = false;
+                clearTimeout(musicTimer);
+                btnText.innerText = "تشغيل الموسيقى";
+                btnIcon.innerText = "🎵";
+            }
+        }
+
+        function toggleSecretMessage() {
+            const card = document.getElementById('secretCard');
+            if (card.style.display === 'block') {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'block';
+                if (!isMusicPlaying) {
+                    toggleSynthMusic();
+                }
+                for(let i = 0; i < 40; i++) {
+                    setTimeout(createHeart, i * 30);
+                }
+                startHeartFireworks();
+            }
+        }
+
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class HeartParticle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                const t = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 4 + 2;
+                this.vx = 16 * Math.pow(Math.sin(t), 3) * (speed / 15);
+                this.vy = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t)) * (speed / 15);
+                this.alpha = 1;
+                this.friction = 0.96;
+                this.gravity = 0.05;
+                this.size = Math.random() * 3 + 2;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            update() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.vy += this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.012;
+            }
+        }
+
+        function createHeartExplosion(x, y) {
+            const colors = ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffffff', '#ff0055'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            for (let i = 0; i < 70; i++) {
+                particles.push(new HeartParticle(x, y, color));
+            }
+        }
+
+        function animateFireworks() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+                if (p.alpha <= 0) {
+                    particles.splice(index, 1);
+                }
+            });
+            requestAnimationFrame(animateFireworks);
+        }
+        animateFireworks();
+
+        function startHeartFireworks() {
+            let count = 0;
+            const interval = setInterval(() => {
+                const x = Math.random() * (canvas.width * 0.8) + (canvas.width * 0.1);
+                const y = Math.random() * (canvas.height * 0.5) + (canvas.height * 0.1);
+                createHeartExplosion(x, y);
+                count++;
+                if (count > 25) {
+                    clearInterval(interval);
+                }
+            }, 400);
+        }
+    </script>
+</body>
+</html>
